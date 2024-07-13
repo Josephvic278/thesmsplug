@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h2>Sign In</h2>
+    <form action="post">
+        <div>
+            <input type="email" name="email" id="email">
+            <span id="email_error"></span>
+        </div>
+<br>
+        <div>
+            <input type="password" id="password" name="password">
+            <span id="password_error"></span>
+        </div>
+
+        <button type="submit">Signin</button>
+    </form>
+    <p>New user register <a href="{% url 'users:signup' %}">here</a></p>
+</body>
+</html>

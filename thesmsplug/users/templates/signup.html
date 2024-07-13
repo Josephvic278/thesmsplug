@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'js/signup.js' %}"></script>
+</head>
+<body>
+    <h2>Register</h2>
+    <form action="post" id="registrationForm"> 
+        <div id="fullname_div">
+            <input type="text" maxlength="20" required placeholder="Full Name">
+        </div>
+        <br>
+        <div id="username_div">
+            <input type="text" name="username" id="username" required placeholder="Username">
+            <span id="username_error"></span>
+        </div>
+        <br>
+        <div>
+            <input type="email" name="email" is="email" required placeholder="Email">
+            <span id="email_error"></span>
+        </div>
+        <br>
+        <div>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <input type="password" id="password1" name="password1" placeholder="Confirm Password" required>
+            <span id="password"></span>
+        </div>
+    
+        <button type="submit">Register</button>
+    </form>  
+    
+    <p>already registered <a href="{% url 'users:login' %}">Sigin</a></p>
+</body>
+</html>
