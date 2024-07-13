@@ -5,9 +5,9 @@ from users.managers import UserManager
 from django.utils import timezone
 
 # Create your models here.
-class UserModel(models.Model):
+class User(AbstractUser):
     email = models.EmailField(unique=True)
-    fullname = models.CharField(max_length=50)
+    full_name = models.CharField(max_length=50)
     username = models.CharField(max_length=150, unique=True, db_index=True)
     phone_number = models.CharField(max_length=20, unique=True)
     wallet_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
