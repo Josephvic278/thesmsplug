@@ -12,16 +12,19 @@
     <form method="post">
     {% csrf_token %}
         <div>
-            <input type="email" name="email" id="email">
+            <input type="text" name="username" id="username" required>
             <span id="email_error"></span>
         </div>
 <br>
         <div>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
             <span id="password_error"></span>
         </div>
 
         <button type="submit">Signin</button>
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
     </form>
     <p>New user register <a href="{% url 'users:signup' %}">here</a></p>
 </body>

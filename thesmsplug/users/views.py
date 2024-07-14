@@ -12,35 +12,34 @@ def signup(request):
         email = request.POST['email']
         password = request.POST['password']
 
-        if User.objects.filter(username=username).exists() or UserModel.objects.filter(email=email).exists():
+        if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
             messages.error(request, "User already exists... Try a different username or email")
             return redirect('signup')
         else:
-            user = UserModel.objects.create_user(
+            user = User.objects.create_user(
                 full_name =full_name, username =username, email=email, password=password
             )
             user.save()
+            return redirect("app:dashboard")
     
     if request.user.is_authenticated:
         return redirect('app:dashboard')
 
     return render(request, 'signup.html')
 
-def login(request):
-    if request.method == 'POST':
+def login_view(request):
+    if request.method == "POST":
         username = request.POST["username"]
-        password = request.POST['password']
-        credentials = (username or password)
+        password = request.POST["password"]
         
-        if not credentials:
-            user = authenticate(request, username=username, password=password)
-
+        user = authenticate(request, username=username, password=password)
+        
         if user is not None:
-            login(user)
+            login(request, user)
             return redirect("app:dashboard")
         else:
             messages.error(request, 'Invalid Credentials')
-            return('users:login')
+            return redirect('users:login')
         
     if request.user.is_authenticated:
         return redirect('app:dashboard')
