@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def landingPage(request):
-    return None
+    return render(request, 'index.html')
     
-def dashBoard(request):
-    return None
+def dashboard(request):
+    pass
