@@ -5,5 +5,5 @@ app_name = 'app'
 
 urlpatterns = [
     path ("", landingPage, name="landing_page"),
-    path("dashboard/", dashboard, name="dash_board")
+    path("dashboard/", dashboard, name="dashboard")
 ]
